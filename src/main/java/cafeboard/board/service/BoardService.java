@@ -6,6 +6,7 @@ import cafeboard.board.entity.Board;
 import cafeboard.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,5 +27,11 @@ public class BoardService {
                         o.getName()
                 ))
                 .toList();
+    }
+
+    @Transactional
+    public void update(Long boardId, BoardRequest rq) {
+        Board board = boardRepository.findById(boardId).orElseThrow(()->new IllegalArgumentException("존재하느 않는 게시판입니다."));
+        board.update(rq);
     }
 }

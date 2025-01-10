@@ -47,4 +47,19 @@ public class BoardApiTests {
                 .jsonPath()
                 .getList(".", BoardResponse.class);
     }
+
+    @Test
+    void updateBoardTest() {
+        RestAssured
+                .given().log().all()
+                .contentType(ContentType.JSON)
+                .body(new BoardRequest(
+                        "updated"
+                ))
+                .pathParam("boardId",1L)
+                .when().put("/boards/{boardId}")
+                .then().log().all()
+                .statusCode(200);
+
+    }
 }

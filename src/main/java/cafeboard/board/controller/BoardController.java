@@ -20,8 +20,13 @@ public class BoardController {
         boardService.save(rq);
     }
 
-    @GetMapping
+    @GetMapping("")
     public List<BoardResponse> readBoardList(){
         return boardService.readAll();
+    }
+
+    @PutMapping("/{boardId}")
+    public void updateBoard(@PathVariable Long boardId, @RequestBody BoardRequest rq){
+        boardService.update(boardId,rq);
     }
 }

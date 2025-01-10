@@ -27,6 +27,16 @@
   }
 ]
 ```
+### 1. 게시판 생성 (PUT "/boards/{boardId}" )
+
+- **설명** : 새로운 게시판 생성
+- **Path Variable**`boardId`: 수정할 게시판의 ID
+- **Request Body**:
+```json
+{
+  "name": "게시판 제목"
+}
+```
 
 # Comment API
 ## 엔드포인트
